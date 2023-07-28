@@ -58,7 +58,9 @@
               "src/dx-styles.scss",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/devex.js"              
+            ]
           },
           "configurations": {
             "production": {

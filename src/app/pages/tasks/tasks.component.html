@@ -1,15 +1,18 @@
 <h2 class="content-block">Tasks</h2>
 
-<dx-data-grid class="dx-card wide-card"
+<dx-data-grid 
+  class="dx-card wide-card"
   [dataSource]="dataSource"
   [showBorders]="false"
   [focusedRowEnabled]="true"
   [focusedRowIndex]="0"
   [allowColumnResizing]="true"
+  [columnResizingMode] = 'columnResizingMode'
   [columnAutoWidth]="false"
   [columnHidingEnabled]="true"
-  (onSelectionChanged)="selectionChangedHandler($event)"
-  (onColumnsChanging)="columnsChanging($event)">
+  (onOptionChanged)="OptionChangedHandler($event)"
+  (onContentReady)="ContentReadyHandler($event)"
+  (onSelectionChanged)="selectionChangedHandler($event)">
 
   <dxo-selection mode="multiple"> </dxo-selection>
   <dxo-paging [pageSize]="10"></dxo-paging>
@@ -19,56 +22,60 @@
   <dxi-column
     dataField="Task_ID"
     [width]="90"
-    [hidingPriority]="2" [width]="125">
+    [hidingPriority]="10" >
   </dxi-column>
   <dxi-column
     dataField="Task_Subject"
     [width]="190"
     caption="Subject"
-    [hidingPriority]="8" [width]="125">
+    [hidingPriority]="9">
   </dxi-column>
   <dxi-column
     dataField="Task_Status"
     caption="Status"
-    [hidingPriority]="6">
+    [hidingPriority]="8">
   </dxi-column>
   <dxi-column
     dataField="Task_Priority"
     caption="Priority"
-    [hidingPriority]="5">
+    [hidingPriority]="7">
     <dxo-lookup
       [dataSource]="priority"
       valueExpr="value"
       displayExpr="name">
+      [hidingPriority]="6">
     </dxo-lookup>
   </dxi-column>
   <dxi-column
     dataField="ResponsibleEmployee.Employee_Full_Name"
     caption="Assigned To"
     [allowSorting]="false"
-    [hidingPriority]="7">
+    [hidingPriority]="5">
   </dxi-column>
   <dxi-column
     dataField="Task_Start_Date"
     caption="Start Date"
     dataType="date"
-    [hidingPriority]="3"[width]="125">
+    [hidingPriority]="4">
   </dxi-column>
   <dxi-column
     dataField="Task_Due_Date"
     caption="Due Date"
     dataType="date"
-    [hidingPriority]="4"[width]="125">
+    [hidingPriority]="4">
   </dxi-column>
   <dxi-column
     dataField="Task_Priority"
     caption="Priority"
     name="Priority"
-    [hidingPriority]="1"[width]="125">
+    alignment="left"
+    [hidingPriority]="2">
   </dxi-column>
   <dxi-column
     dataField="Task_Completion"
     caption="Completion"
-    [hidingPriority]="0"[width]="125">
+    alignment="left"
+    [hidingPriority]="1">
+    [width]="120"
   </dxi-column>
 </dx-data-grid>
